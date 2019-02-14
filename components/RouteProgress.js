@@ -7,7 +7,7 @@ class RouteProgress extends React.Component {
       	super(props);
       	this.state = {
     		color: "#2299DD",
-        	showAfterMs: 100,
+        	showAfterMs: 300,
         	width: 0,
         	max_width: Math.round(Math.random()*(65 - 50) + 50)
     	};
@@ -88,7 +88,7 @@ class RouteProgress extends React.Component {
 		          top: 0;
 		          left: 0;
 		          width: 100%;
-		          height: 3px;
+		          height: 1px;
 		          z-index: 1000000;
 		          background: azure;
 		        }

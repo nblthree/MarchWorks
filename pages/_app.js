@@ -7,10 +7,11 @@ export default class MyApp extends App {
 	static async getInitialProps ({ctx}) {
 		return {
 			pageProps: {
-				oAni: ctx.req ? true : false
+				oAni: ctx.req ? true : false,
+        query: ctx.query
 			}
 		}
-  	}
+  }
 
   render() {
     const { Component, pageProps } = this.props;

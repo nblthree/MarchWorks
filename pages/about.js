@@ -14,7 +14,8 @@ class About extends React.Component {
         this.canvasObject = null;
     }
     componentDidMount(){
-        this.canvasObject = new ImageEditor(this.canvas.current, "/static/mySelfLarg.jpg", this.section.current.offsetWidth, 400, 'sobel', 'rg');
+        this.canvasObject = new ImageEditor(this.canvas.current, "/static/mySelfLarg.jpg", this.section.current.offsetWidth < 600 ? this.section.current.offsetWidth : 600, 800, 'sobel', 'rg');
+        //this.canvasObject = new Fontain(this.canvas.current, "/static/tester.jpg");
         window.addEventListener('resize', this.resize);
     }
     componentWillUnmount(){
@@ -105,10 +106,14 @@ class About extends React.Component {
                         .intro div:nth-child(2){
                             padding: 5% 0% 5% 0%;
                         }
+                        .About {
+                            padding: 0 20px 0 20px;   
+                        }
                     }
                     .About {
                         width: 100%;
                         height: 1000px;
+                        box-sizing: border-box;
                     }
                 `}</style>
             </div>

@@ -89,10 +89,14 @@ class Index extends React.Component {
                         .intro div{
                             padding: 3% 1% 3% 0%;
                         }
+                        .Home {
+                            padding: 0 20px 0 20px;   
+                        }
                     }
                     .Home {
                         width: 100%;
                         height: 1000px;
+                        box-sizing: border-box;
                     }
 
                     #welcome {

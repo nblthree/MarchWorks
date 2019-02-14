@@ -89,10 +89,9 @@ class Layout extends React.Component {
             #window > div:nth-child(1){
               width: 100%;
               height: 100%;
-              overflow-y: scroll;
+              //overflow-y: scroll;
               overflow-x: hidden;
               position: relative;
-              padding: 30px;
               box-sizing: border-box;
               background-color: transparent;
               z-index: 1;

@@ -32,6 +32,7 @@ class Contact extends React.Component {
                 <style jsx>{`
                     .Contact {
                         width: 100%;
+                        box-sizing: border-box;
                     }
                     section{
                         padding: 5% 0 5% 0;
@@ -47,6 +48,9 @@ class Contact extends React.Component {
                      @media only screen and (max-width: 600px){
                         div{
                             padding: 6% 1% 6% 0%;
+                        }
+                        .Contact {
+                            padding: 0 20px 0 20px;   
                         }
                     }
                 `}</style>

@@ -7,17 +7,31 @@ class OpeningAnimation extends React.Component {
     
     };
     this.cancel = this.cancel.bind(this);
+    this.wrapper = React.createRef();
   }
   cancel(){
     this.props.aniEnd();
   }
   componentDidMount(){
-    setTimeout(this.cancel, 2500);
+  	var wrapper = this.wrapper.current;
+  	setTimeout(()=>{
+  		var fin = 0;
+  		for(let k=0; k<wrapper.children.length; k++){
+  			wrapper.children[k].style.animationPlayState = "running";
+  			wrapper.children[k].addEventListener( "animationend", ()=>{
+  				fin++;
+  				if(fin >= wrapper.children.length){
+  					setTimeout(this.cancel, 500);
+  				}
+  			})
+  		}
+  	}, 1000)
+    
   }
 
     render (){
       return (
-        <div id="wrapper">
+        <div id="wrapper" ref={this.wrapper}>
           <div></div>
           <div></div>
           <div></div>
@@ -26,7 +40,7 @@ class OpeningAnimation extends React.Component {
 
           
 
-          <img src="static/logo.svg" />
+          <img src="/static/logo.svg" />
 
           <style jsx>{`
             img{
@@ -35,7 +49,7 @@ class OpeningAnimation extends React.Component {
               margin: auto;
               z-index: 10000;
               user-select: none;
-              animation: fade 0.1s linear 0.2s 5 forwards;
+              animation: fade 0.1s linear 0.2s 5 forwards paused;
             }
             #wrapper{
               position: fixed;
@@ -55,27 +69,27 @@ class OpeningAnimation extends React.Component {
             #wrapper > div:nth-child(1){
               background-color: #353535;
               z-index: 1;
-              animation: charge 0.4s linear 1s forwards;  
+              animation: charge 0.4s linear 1s forwards paused;  
             }
             #wrapper > div:nth-child(2){
               background-color: #303030;
               z-index: 2;
-              animation: charge 0.4s linear 1.2s forwards;  
+              animation: charge 0.4s linear 1.2s forwards paused;  
             }
             #wrapper > div:nth-child(3){
               background-color: #252525;
               z-index: 3;
-              animation: charge 0.4s linear 1.4s forwards;  
+              animation: charge 0.4s linear 1.4s forwards paused;  
             }
             #wrapper > div:nth-child(4){
               background-color: #202020;
               z-index: 4;
-              animation: charge 0.4s linear 1.6s forwards;  
+              animation: charge 0.4s linear 1.6s forwards paused;  
             }
             #wrapper > div:nth-child(5){
               background-color: #151515;
               z-index: 5;
-              animation: charge 0.4s linear 1.8s forwards;  
+              animation: charge 0.4s linear 1.8s forwards paused;  
             }
             @keyframes fade {
               0% {

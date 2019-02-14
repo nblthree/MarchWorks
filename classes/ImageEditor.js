@@ -10,10 +10,6 @@ class ImageEditor {
 		this.args = typeof args === 'string' ? args.toLowerCase() : ((typeof args === 'object' || typeof args === 'function') ? false : args)
 		this.originalData = null
 		this.load()
-		this.r = 1;
-		this.center = [];
-		this.add = true;
-		this.render = true;
 	}
 	async load(){
 		this.img = await this.addImageProcess(this.src)
@@ -26,62 +22,6 @@ class ImageEditor {
 	    img.onerror = reject
 	    img.src = src
   		})
-	}
-	hover(evt){
-		if(this.add){
-			this.add=false;
-			var rect = this.canvas.getBoundingClientRect();
-			this.center.push({x: evt.clientX - rect.left, y: evt.clientY - rect.top, r: 2, speed: 5});
-			setTimeout(this.act.bind(this), 80);
-			if(this.render){
-				this.render = false;
-				this.animate();
-			}
-		}
-	}
-	act(){
-		this.add = true;
-	}
-	leave(){
-		if(this.center.length>0 && this.center[0].r**2 >= this.canvas.width**2 + this.canvas.height**2){
-			this.render = true;
-			this.center=[];
-			if(this.filter === 'sobel'){
-				this.data = this.sobel()
-				this.ctx.putImageData(this.data, 0, 0);
-			}else{
-				var st = ['reverseRGB']
-				var args = st.includes(this.filter) ? (['rg', 'gr', 'rb', 'br', 'bg', 'gb'].includes(this.args) ? this.args : 'rb') : 100
-				this.data = this.filterImage(this.filter, args)
-				this.ctx.putImageData(this.data, 0, 0);
-			}
-		}else{
-			setTimeout(this.leave.bind(this), 1000)
-		}
-	}
-	animate(){
-		if(this.center.length==0 || this.center[0].r**2 < this.canvas.width**2 + this.canvas.height**2){
-			requestAnimationFrame(this.animate.bind(this));
-		}
-
-		for(let i=0; i<this.data.data.length; i+=4){
-			var n = i/4 + 1;
-			var x = n%this.canvas.width;
-			var y = Math.floor(n/this.canvas.width);
-
-			for(let j=0; j<this.center.length; j++){
-				if((x - this.center[j].x)**2 + (y - this.center[j].y)**2 <= this.center[j].r**2){
-					this.data.data[i] = this.originalData.data[i];
-					this.data.data[i+1] = this.originalData.data[i+1];
-					this.data.data[i+2] = this.originalData.data[i+2];
-				}
-			}
-		}
-		this.ctx.putImageData(this.data, 0, 0);
-		for (let k = 0; k < this.center.length; k++) {
-			this.center[k].r+=this.center[k].speed;
-			this.center[k].speed*= 1.02;
-		}
 	}
 	onload(maxw=0 , maxh=0){
 		if(maxh !== 0 && maxw !== 0){
@@ -106,9 +46,6 @@ class ImageEditor {
 			this.data = this.filterImage(this.filter, args)
 			this.ctx.putImageData(this.data, 0, 0);
 		}
-
-		this.canvas.addEventListener('mousemove', this.hover.bind(this))
-		this.canvas.addEventListener('mouseleave', this.leave.bind(this))
 	}
 	getPixels() {
 		this.canvas.width = this.img.width;
@@ -148,44 +85,6 @@ class ImageEditor {
 		}
   		return pixels;
 	}
-	golden(pixels, threshold) {
-		var d = pixels.data;
-		for (var i=0; i<d.length; i+=4) {
-			var t = d[i]>150 && d[i+2]<50;
-		    d[i] = t ? Math.floor(d[i]*1.2<255 ? d[i]*1.2 : 255) : d[i];
-		    d[i+1] = t ? Math.floor(d[i+1]*1.2<215 ? d[i+1]*1.2 : 215) : d[i+1];
-		    d[i+2] = t ? Math.floor(d[i+2]*0.8) : d[i+2];
-		}
-  		return pixels;
-	}
-	darker_brighter(pixels, threshold) {
-		var d = pixels.data;
-		for (var i=0; i<d.length; i+=4) {
-			var t = d[i]<70 && d[i+1]<70 && d[i+2]<70;
-		    d[i] = t ? Math.floor(d[i]*0.9) : Math.floor(d[i]*1.1<255 ? d[i]*1.1 : 255);
-		    d[i+1] = t ? Math.floor(d[i+1]*0.9) : Math.floor(d[i+1]*1.1<255 ? d[i+1]*1.1 : 255);
-		    d[i+2] = t ? Math.floor(d[i+2]*0.9) : Math.floor(d[i+2]*1.1<255 ? d[i+2]*1.1 : 255);
-		}
-  		return pixels;
-	}
-	Brighter(pixels, threshold) {
-		var d = pixels.data;
-		for (var i=0; i<d.length; i+=4) {
-		    d[i] *= 1.1;
-		    d[i+1] *= 1.1;
-		    d[i+2] *= 1.1;
-		}
-  		return pixels;
-	}
-	nightMode(pixels, threshold) {
-		var d = pixels.data;
-		for (var i=0; i<d.length; i+=4) {
-		    d[i] *= 0.8;
-		    d[i+1] *= 0.95;
-		    d[i+2] *= 1.1;
-		}
-  		return pixels;
-	}
 	reverse(pixels, threshold) {
 		var d = pixels.data;
 		for (var i=0; i<d.length; i+=4) {
@@ -215,39 +114,6 @@ class ImageEditor {
 			    d[i+1] = d[i+2];
 			    d[i+2] = e;
 			}	
-		}
-  		return pixels;
-	}
-	emphasizeG(pixels, color) {
-		var d = pixels.data;
-		for (var i=0; i<d.length; i+=4) {
-			var t = d[i]<240 && d[i+1]<240 && d[i+2]<240 && (d[i]>20 || d[i+1]>20 || d[i+2]>20);
-			
-		    d[i]   = t ? d[i]*0.8 : d[i];
-		    d[i+1] = t ? d[i+1]*1.1 : d[i+1];
-		    d[i+2] = t ? d[i+2]*0.8 : d[i+2];
-		}
-  		return pixels;
-	}
-	emphasizeB(pixels, color) {
-		var d = pixels.data;
-		for (var i=0; i<d.length; i+=4) {
-			var t = d[i]<240 && d[i+1]<240 && d[i+2]<240 && (d[i]>20 || d[i+1]>20 || d[i+2]>20);
-			
-		    d[i]   = t ? d[i]*0.8 : d[i];
-		    d[i+1] = t ? d[i+1]*0.8 : d[i+1];
-		    d[i+2] = t ? d[i+2]*1.1 : d[i+2];
-		}
-  		return pixels;
-	}
-	emphasizeR(pixels, color) {
-		var d = pixels.data;
-		for (var i=0; i<d.length; i+=4) {
-			var t = d[i]<240 && d[i+1]<240 && d[i+2]<240 && (d[i]>20 || d[i+1]>20 || d[i+2]>20);
-			
-		    d[i]   = t ? d[i]*1.1 : d[i];
-		    d[i+1] = t ? d[i+1]*0.8 : d[i+1];
-		    d[i+2] = t ? d[i+2]*0.8 : d[i+2];
 		}
   		return pixels;
 	}

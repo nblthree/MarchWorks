@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import Text from '../classes/Text';
 import Link from './Link'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTwitter, faGithub, faStackOverflow } from '@fortawesome/free-brands-svg-icons'
+
+
 class MainMenu extends Component {
   constructor(props){
     super(props);
@@ -65,7 +69,7 @@ class MainMenu extends Component {
             <span></span>
             <span></span>
           </div>
-          <h2><img className="logo" src="static/logo.svg" /></h2>
+          <h2><Link href='/'><img className="logo" src="/static/logo.svg" /></Link></h2>
           <nav>
             <ul>
               <li className={this.state.liClass}><Link activeClassName='is-active' href='/'>
@@ -85,11 +89,16 @@ class MainMenu extends Component {
               </Link></li>
             </ul>
           </nav>
-          <h4>Produced by Boussouf Nabil</h4>
+          <div className="socialMedia">
+            <a href="https://github.com/marchworks" title="Github" target="_blank"><FontAwesomeIcon icon={faGithub} size="lg" color="#fff" /></a>
+            <a href="https://twitter.com/marchworks" title="Twitter" target="_blank"><FontAwesomeIcon icon={faTwitter} size="lg" color="#fff" /></a>
+            <a href="https://stackoverflow.com/users/story/8619959" title="Stack Overflow" target="_blank"><FontAwesomeIcon icon={faStackOverflow} size="lg" color="#fff" /></a>
+          </div>
         <style jsx>{`
             .logo{
               width: 80%;
               max-width: 250px;
+              cursor: pointer;
             }
             #mainMenu {
                 position: relative;
@@ -356,6 +365,18 @@ class MainMenu extends Component {
                 }
               }
 
+              #mainMenu .socialMedia{
+                padding: 0;
+                margin: 0;
+                display: flex;
+                justify-content: center;
+                position: absolute;
+                width: 100%;
+                left: 0;
+              }
+              #mainMenu .socialMedia a{
+                margin: 0 10%;
+              }
               @media only screen and (min-width: 601px) {
                 #mainMenu {
                   left: 0;
@@ -364,16 +385,6 @@ class MainMenu extends Component {
                 }
               }
 
-              @media only screen and (max-width: 600px) {
-                #mainMenu h4 {
-                  padding: 25px;
-                  text-align: center;
-                }
-              }
-              #mainMenu h4{
-                padding: 0;
-                margin: 0;
-              }
               #mainMenu nav {
                 height: calc(100% - 200px);
                 max-height: calc(100% - 200px);
