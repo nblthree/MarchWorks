@@ -40,7 +40,7 @@ class OpeningAnimation extends React.Component {
 
           
 
-          <img src="/static/logo.svg" />
+          <img src="/static/logo.svg" alt="" />
 
           <style jsx>{`
             img{

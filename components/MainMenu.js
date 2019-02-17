@@ -69,23 +69,23 @@ class MainMenu extends Component {
             <span></span>
             <span></span>
           </div>
-          <h2><Link href='/'><img className="logo" src="/static/logo.svg" /></Link></h2>
+          <h2><Link href='/'><img className="logo" src="/static/logo.svg" alt="" /></Link></h2>
           <nav>
             <ul>
               <li className={this.state.liClass}><Link activeClassName='is-active' href='/'>
-                  <a><div className="arrow"></div><canvas name="HOME" ref={this.canvas.home}></canvas><span></span><span></span></a>
+                  <a><div className="arrow"></div><canvas name="HOME" ref={this.canvas.home}>HOME</canvas><span></span><span></span></a>
               </Link></li>
               
               <li className={this.state.liClass}><Link activeClassName='is-active' href='/about'>
-                  <a><div className="arrow"></div><canvas name="ABOUT" ref={this.canvas.about}></canvas><span></span><span></span></a>
+                  <a><div className="arrow"></div><canvas name="ABOUT" ref={this.canvas.about}>ABOUT</canvas><span></span><span></span></a>
               </Link></li>
               
               <li className={this.state.liClass}><Link activeClassName='is-active' href='/contact'>
-                  <a><div className="arrow"></div><canvas name="CONTACT" ref={this.canvas.contact}></canvas><span></span><span></span></a>
+                  <a><div className="arrow"></div><canvas name="CONTACT" ref={this.canvas.contact}>CONTACT</canvas><span></span><span></span></a>
               </Link></li>
               
               <li className={this.state.liClass}><Link activeClassName='is-active' href='/tutorials'>
-                  <a><div className="arrow"></div><canvas name="TUTORIALS" ref={this.canvas.tuto}></canvas><span></span><span></span></a>
+                  <a><div className="arrow"></div><canvas name="TUTORIALS" ref={this.canvas.tuto}>TUTORIALS</canvas><span></span><span></span></a>
               </Link></li>
             </ul>
           </nav>
