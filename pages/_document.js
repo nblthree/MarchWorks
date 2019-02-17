@@ -15,7 +15,6 @@ export default class MyDocument extends Document {
           <link href="https://fonts.googleapis.com/css?family=Oswald:300|Source+Sans+Pro:700" rel="stylesheet"></link>
         </Head>
         <body>
-          <script src="/static/threejs/three.js"></script>
           <Main />
           <NextScript />
         </body>

@@ -10,6 +10,8 @@ class ImageEditor {
 		this.args = typeof args === 'string' ? args.toLowerCase() : ((typeof args === 'object' || typeof args === 'function') ? false : args)
 		this.originalData = null
 		this.load()
+
+		this.drawOver = this.drawOver.bind(this)
 	}
 	async load(){
 		this.img = await this.addImageProcess(this.src)
@@ -46,6 +48,7 @@ class ImageEditor {
 			this.data = this.filterImage(this.filter, args)
 			this.ctx.putImageData(this.data, 0, 0);
 		}
+		this.drawOver()
 	}
 	getPixels() {
 		this.canvas.width = this.img.width;
@@ -67,12 +70,24 @@ class ImageEditor {
 		    var r = d[i];
 		    var g = d[i+1];
 		    var b = d[i+2];
-		    // CIE luminance for the RGB
-		    // The human eye is bad at seeing red and blue, so we de-emphasize them.
 		    var v = 0.2126*r + 0.7152*g + 0.0722*b;
 		    d[i] = d[i+1] = d[i+2] = v
 	  	}
 	  	return pixels;
+	}
+	drawOver(){
+		const num = 1
+		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+		this.ctx.putImageData(this.data, 0, 0);
+		this.ctx.strokeStyle = "#999"
+		for (var i = 0; i < num; i++) {
+			this.ctx.beginPath();
+			var pos = {x: this.canvas.width*Math.random(), y: this.canvas.height*Math.random()}
+			this.ctx.moveTo(pos.x, pos.y);
+			this.ctx.lineTo(pos.x + Math.random()*(50 - 10) + 10, pos.y);
+			this.ctx.stroke();
+		}
+		requestAnimationFrame(this.drawOver)
 	}
 	threshold(pixels, threshold=100) {
 		var d = pixels.data;

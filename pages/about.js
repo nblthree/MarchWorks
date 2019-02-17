@@ -15,7 +15,6 @@ class About extends React.Component {
     }
     componentDidMount(){
         this.canvasObject = new ImageEditor(this.canvas.current, "/static/mySelfLarg.jpg", this.section.current.offsetWidth < 600 ? this.section.current.offsetWidth : 600, 800, 'sobel', 'rg');
-        //this.canvasObject = new Fontain(this.canvas.current, "/static/tester.jpg");
         window.addEventListener('resize', this.resize);
     }
     componentWillUnmount(){
@@ -29,6 +28,7 @@ class About extends React.Component {
           <Layout oAni={this.props.oAni}>
             <Head>
                <title>ABOUT</title>
+               <meta name="Description" content="About BOUSSOUF NABIL" />
             </Head>
         	<div className="About">
                 <section className="intro" ref={this.section}>

@@ -90,9 +90,9 @@ class MainMenu extends Component {
             </ul>
           </nav>
           <div className="socialMedia">
-            <a href="https://github.com/marchworks" title="Github" target="_blank"><FontAwesomeIcon icon={faGithub} size="lg" color="#fff" /></a>
-            <a href="https://twitter.com/marchworks" title="Twitter" target="_blank"><FontAwesomeIcon icon={faTwitter} size="lg" color="#fff" /></a>
-            <a href="https://stackoverflow.com/users/story/8619959" title="Stack Overflow" target="_blank"><FontAwesomeIcon icon={faStackOverflow} size="lg" color="#fff" /></a>
+            <a href="https://github.com/marchworks" rel="noreferrer" title="Github" target="_blank"><FontAwesomeIcon icon={faGithub} size="lg" color="#fff" /></a>
+            <a href="https://twitter.com/marchworks" rel="noreferrer" title="Twitter" target="_blank"><FontAwesomeIcon icon={faTwitter} size="lg" color="#fff" /></a>
+            <a href="https://stackoverflow.com/users/story/8619959" rel="noreferrer" title="Stack Overflow" target="_blank"><FontAwesomeIcon icon={faStackOverflow} size="lg" color="#fff" /></a>
           </div>
         <style jsx>{`
             .logo{
@@ -113,178 +113,8 @@ class MainMenu extends Component {
                 box-sizing: border-box;
               }
 
-              @media only screen and (max-width: 600px) {
-                #mainMenu .design span:before, #mainMenu .design span:after, #mainMenu li a span:before, #mainMenu li a span:after {
-                  background-color: #fff;/*#999*/
-                }
-                #mainMenu .design {
-                  position: absolute;
-                }
-                #mainMenu .design:nth-child(1) {
-                  top: 5px;
-                  left: 5px;
-                }
-                #mainMenu .design:nth-child(1) span:first-child:before {
-                  content: "";
-                  width: 25px;
-                  height: 2px;
-                  position: absolute;
-                  left: 100%;
-                  top: 5px;
-                }
-
-                #mainMenu .design:nth-child(1) span:first-child:after {
-                  content: "";
-                  width: 2px;
-                  height: 25px;
-                  position: absolute;
-                  top: 5px;
-                }
-
-                #mainMenu .design:nth-child(1) span:last-child:before {
-                  content: "";
-                  width: 25px;
-                  height: 2px;
-                  position: absolute;
-                  left: calc(100% + 5px);
-                }
-
-                #mainMenu .design:nth-child(1) span:last-child:after {
-                  content: "";
-                  width: 2px;
-                  height: 25px;
-                  left: 5px;
-                  position: absolute;                  
-                }
-
-                #mainMenu .design:nth-child(2) {
-                  bottom: 5px;
-                  right: 5px;
-                }
-
-                #mainMenu .design:nth-child(2) span:first-child:before {
-                  content: "";
-                  width: 25px;
-                  height: 2px;
-                  position: absolute;
-                  right: 100%;
-                  bottom: 5px;      
-                }
-
-                #mainMenu .design:nth-child(2) span:first-child:after {
-                  content: "";
-                  width: 2px;
-                  height: 25px;
-                  position: absolute;
-                  bottom: 5px;             
-                }
-
-                #mainMenu .design:nth-child(2) span:last-child:before {
-                  content: "";
-                  width: 25px;
-                  height: 2px;
-                  position: absolute;
-                  right: calc(100% + 5px);
-                }
-
-                #mainMenu .design:nth-child(2) span:last-child:after {
-                  content: "";
-                  width: 2px;
-                  height: 25px;
-                  right: 5px;
-                  bottom: 100%;
-                  position: absolute;
-                }
-
-                #mainMenu .design:nth-child(3) {
-                  bottom: 5px;
-                  left: 5px;
-                }
-
-                #mainMenu .design:nth-child(3) span:first-child:before {
-                  content: "";
-                  width: 25px;
-                  height: 2px;
-                  position: absolute;
-                  left: 100%;
-                  bottom: 5px;
-                }
-
-                #mainMenu .design:nth-child(3) span:first-child:after {
-                  content: "";
-                  width: 2px;
-                  height: 25px;
-                  position: absolute;
-                  bottom: 5px;
-                }
-
-                #mainMenu .design:nth-child(3) span:last-child:before {
-                  content: "";
-                  width: 25px;
-                  height: 2px;
-                  position: absolute;
-                  left: calc(100% + 5px);
-                }
-
-                #mainMenu .design:nth-child(3) span:last-child:after {
-                  content: "";
-                  width: 2px;
-                  height: 25px;
-                  left: 5px;
-                  bottom: 100%;
-                  position: absolute;
-                }
-
-                #mainMenu .design:nth-child(4) {
-                  top: 5px;
-                  right: 5px;
-                }
-
-                #mainMenu .design:nth-child(4) span:first-child:before {
-                  content: "";
-                  width: 25px;
-                  height: 2px;
-                  position: absolute;
-                  right: 100%;
-                  top: 5px;
-                }
-
-                #mainMenu .design:nth-child(4) span:first-child:after {
-                  content: "";
-                  width: 2px;
-                  height: 25px;
-                  position: absolute;
-                  top: 5px;
-                }
-
-                #mainMenu .design:nth-child(4) span:last-child:before {
-                  content: "";
-                  width: 25px;
-                  height: 2px;
-                  position: absolute;
-                  right: calc(100% + 5px);
-                  top: 0px;
-                }
-
-                #mainMenu .design:nth-child(4) span:last-child:after {
-                  content: "";
-                  width: 2px;
-                  height: 25px;
-                  right: 5px;
-                  top: 100%;
-                  position: absolute;
-                }
-              }
-
               #mainMenu h2 {
                 margin-top: 50px;
-              }
-
-              @media only screen and (max-width: 600px) {
-                #mainMenu h2 {
-                  text-align: center;
-                  margin-bottom: 40px;
-                }
               }
 
               #mainMenu .menu {
@@ -332,12 +162,6 @@ class MainMenu extends Component {
                 transition: 0.3s 0.3s linear;
               }
 
-              @media only screen and (max-width: 600px) {
-                #mainMenu .menu {
-                  	display: block;
-                }
-              }
-
               #mainMenu .close span {
                 background-color: #fff;
               }
@@ -353,16 +177,6 @@ class MainMenu extends Component {
 
               #mainMenu .close span:before {
                 width: 0;
-              }
-
-              @media only screen and (max-width: 600px) {
-                #mainMenu {
-                  left: -100vw;
-                  position: fixed;
-                  width: 100vw;
-                  padding: 0;
-                  min-width: infinite;
-                }
               }
 
               #mainMenu .socialMedia{
@@ -400,12 +214,6 @@ class MainMenu extends Component {
                 height: 100%;
               }
 
-              @media only screen and (max-width: 600px) {
-                #mainMenu ul {
-                  padding: 0;
-                }
-              }
-
               #mainMenu li {
                 margin: 20px 0 20px 0;
                 padding: 20px 0 20px 0;
@@ -423,7 +231,6 @@ class MainMenu extends Component {
                   padding: 5px 0 5px 0;
                 }
               }
-
               @media only screen and (max-width: 600px) {
                 #mainMenu li {
                   text-align: center;
@@ -462,63 +269,6 @@ class MainMenu extends Component {
                 display: none;
               }
 
-              @media only screen and (max-width: 600px) {
-                #mainMenu li a {
-                  width: 150px;
-                }
-
-                #mainMenu li a canvas {
-                  margin: auto;
-                }
-
-                #mainMenu li a span {
-                  display: block;
-                  position: absolute;
-                }
-
-                #mainMenu li a span:nth-child(3) {
-                  top: 0;
-                  right: 0;
-                }
-
-                #mainMenu li a span:nth-child(3):before {
-                  content: "";
-                  width: 15px;
-                  height: 2px;
-                  position: absolute;
-                  right: 100%;
-                }
-
-                #mainMenu li a span:nth-child(3):after {
-                  content: "";
-                  width: 2px;
-                  height: 15px;
-                  position: absolute;
-                }
-
-                #mainMenu li a span:nth-child(4) {
-                  bottom: 0;
-                  left: 0;
-                }
-
-                #mainMenu li a span:nth-child(4):before {
-                  content: "";
-                  width: 15px;
-                  height: 2px;
-                  position: absolute;
-                  
-                }
-
-                #mainMenu li a span:nth-child(4):after {
-                  content: "";
-                  width: 2px;
-                  height: 15px;
-                  position: absolute;
-                  bottom: 100%;
-                  
-                }
-              }
-
               #mainMenu .is-active {
                 color: #dcdcdc;
               }
@@ -532,16 +282,207 @@ class MainMenu extends Component {
                 border-left: 15px #2d2222 solid;
               }
 
+              #mainMenu .is-active:hover {
+                color: #dcdcdc;
+                border-bottom: none;
+              }
               @media only screen and (max-width: 600px) {
+                #mainMenu .design span:before, #mainMenu .design span:after, #mainMenu li a span:before, #mainMenu li a span:after {
+                  background-color: #fff;
+                  position: absolute;
+                  content: "";
+                }
+                #mainMenu .design {
+                  position: absolute;
+                }
+                #mainMenu .design:nth-child(1) {
+                  top: 5px;
+                  left: 5px;
+                }
+                #mainMenu .design:nth-child(1) span:first-child:before {
+                  width: 25px;
+                  height: 2px;
+                  left: 100%;
+                  top: 5px;
+                }
+
+                #mainMenu .design:nth-child(1) span:first-child:after {
+                  width: 2px;
+                  height: 25px;
+                  top: 5px;
+                }
+
+                #mainMenu .design:nth-child(1) span:last-child:before {
+                  width: 25px;
+                  height: 2px;
+                  left: calc(100% + 5px);
+                }
+
+                #mainMenu .design:nth-child(1) span:last-child:after {
+                  width: 2px;
+                  height: 25px;
+                  left: 5px;            
+                }
+
+                #mainMenu .design:nth-child(2) {
+                  bottom: 5px;
+                  right: 5px;
+                }
+
+                #mainMenu .design:nth-child(2) span:first-child:before {
+                  width: 25px;
+                  height: 2px;
+                  right: 100%;
+                  bottom: 5px;      
+                }
+
+                #mainMenu .design:nth-child(2) span:first-child:after {
+                  width: 2px;
+                  height: 25px;
+                  bottom: 5px;             
+                }
+
+                #mainMenu .design:nth-child(2) span:last-child:before {
+                  width: 25px;
+                  height: 2px;
+                  right: calc(100% + 5px);
+                }
+
+                #mainMenu .design:nth-child(2) span:last-child:after {
+                  width: 2px;
+                  height: 25px;
+                  right: 5px;
+                  bottom: 100%;
+                }
+
+                #mainMenu .design:nth-child(3) {
+                  bottom: 5px;
+                  left: 5px;
+                }
+
+                #mainMenu .design:nth-child(3) span:first-child:before {
+                  width: 25px;
+                  height: 2px;
+                  left: 100%;
+                  bottom: 5px;
+                }
+
+                #mainMenu .design:nth-child(3) span:first-child:after {
+                  width: 2px;
+                  height: 25px;
+                  bottom: 5px;
+                }
+
+                #mainMenu .design:nth-child(3) span:last-child:before {
+                  width: 25px;
+                  height: 2px;
+                  left: calc(100% + 5px);
+                }
+
+                #mainMenu .design:nth-child(3) span:last-child:after {
+                  width: 2px;
+                  height: 25px;
+                  left: 5px;
+                  bottom: 100%;
+                }
+
+                #mainMenu .design:nth-child(4) {
+                  top: 5px;
+                  right: 5px;
+                }
+
+                #mainMenu .design:nth-child(4) span:first-child:before {
+                  width: 25px;
+                  height: 2px;
+                  right: 100%;
+                  top: 5px;
+                }
+
+                #mainMenu .design:nth-child(4) span:first-child:after {
+                  width: 2px;
+                  height: 25px;
+                  top: 5px;
+                }
+
+                #mainMenu .design:nth-child(4) span:last-child:before {
+                  width: 25px;
+                  height: 2px;
+                  right: calc(100% + 5px);
+                  top: 0px;
+                }
+
+                #mainMenu .design:nth-child(4) span:last-child:after {
+                  width: 2px;
+                  height: 25px;
+                  right: 5px;
+                  top: 100%;
+                }
+                #mainMenu h2 {
+                  text-align: center;
+                  margin-bottom: 40px;
+                }
+                #mainMenu .menu {
+                    display: block;
+                }
+                #mainMenu {
+                  left: -100vw;
+                  position: fixed;
+                  width: 100vw;
+                  padding: 0;
+                  min-width: infinite;
+                }
+                #mainMenu ul {
+                  padding: 0;
+                }
+                #mainMenu li a {
+                  width: 150px;
+                }
+                #mainMenu li a canvas {
+                  margin: auto;
+                }
+                #mainMenu li a span {
+                  display: block;
+                  position: absolute;
+                }
+                #mainMenu li a span:nth-child(3) {
+                  top: 0;
+                  right: 0;
+                }
+                #mainMenu li a span:nth-child(3):before {
+                  content: "";
+                  width: 15px;
+                  height: 2px;
+                  position: absolute;
+                  right: 100%;
+                }
+                #mainMenu li a span:nth-child(3):after {
+                  content: "";
+                  width: 2px;
+                  height: 15px;
+                  position: absolute;
+                }
+                #mainMenu li a span:nth-child(4) {
+                  bottom: 0;
+                  left: 0;
+                }
+                #mainMenu li a span:nth-child(4):before {
+                  content: "";
+                  width: 15px;
+                  height: 2px;
+                  position: absolute;
+                  
+                }
+                #mainMenu li a span:nth-child(4):after {
+                  content: "";
+                  width: 2px;
+                  height: 15px;
+                  position: absolute;
+                  bottom: 100%;
+                }
                 #mainMenu .is-active .arrow {
                   display: none;
                 }
               }
-
-              #mainMenu .is-active:hover {
-                color: #dcdcdc;
-                border-bottom: none;
-              }    
         `}</style>
         </menu>
     );

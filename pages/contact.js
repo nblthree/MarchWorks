@@ -16,6 +16,7 @@ class Contact extends React.Component {
           <Layout oAni={this.props.oAni}>
             <Head>
                <title>CONTACT</title>
+               <meta name="Description" content="Contact BOUSSOUF NABIL" />
             </Head>
         	<div className="Contact">
                 <section>

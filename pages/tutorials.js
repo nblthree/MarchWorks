@@ -15,6 +15,7 @@ class Tutorials extends React.Component {
           <Layout oAni={this.props.oAni}>
             <Head>
                <title>TUTORIALS</title>
+               <meta name="Description" content="Tutorials" />
             </Head>
         	<div className="Tutorials">
                 <section>

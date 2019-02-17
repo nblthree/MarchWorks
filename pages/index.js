@@ -45,6 +45,7 @@ class Index extends React.Component {
           <Layout oAni={this.props.oAni}>
             <Head>
                <title>HOME</title>
+               <meta name="Description" content="Produced By BOUSSOUF NABIL" />
             </Head>
         	<div className="Home">
                 <div id="welcome">
