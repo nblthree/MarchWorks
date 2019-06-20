@@ -25,23 +25,6 @@ class MainMenu extends Component {
     this.obj = [];
   }
 
-  classToggle(target) {
-    this.setState((state) => {
-      if (target === 'menu') {
-        if (state.menuClass === 'menu close') {
-          setTimeout(this.props.transformation, 500);
-        } else {
-          this.props.transformation();
-        }
-
-        return {
-          menuClass: state.menuClass === 'menu' ? 'menu close' : 'menu',
-          liClass: state.menuClass === 'menu' ? 'liTransition' : '',
-        };
-      }
-    });
-  }
-
   componentDidMount() {
     const { obj } = this;
     for (const ref in this.canvas) {
@@ -63,18 +46,17 @@ class MainMenu extends Component {
       object.canvas.parentElement.addEventListener('click', () => {
         obj.forEach((o) => {
           if (o.text !== object.text) {
-            o.fillStyle = this.theme === 'light' ? '#000000' : '#ffffff'; // "#7e7e7e"
+            o.fillStyle = this.theme === 'light' ? '#000000' : '#ffffff';
             o.write();
           }
         });
-        object.fillStyle = this.theme === 'light' ? '#444444' : '#aaaaaa'; // "#3e3e3e"
+        object.fillStyle = this.theme === 'light' ? '#444444' : '#aaaaaa';
         object.write();
       });
     });
   }
 
   componentDidUpdate(prev) {
-    // console.log(prev, this.props.theme)
     if (prev.theme !== this.props.theme) {
       for (const canvas of this.obj) {
         canvas.setColors(
@@ -83,6 +65,23 @@ class MainMenu extends Component {
         );
       }
     }
+  }
+
+  classToggle(target) {
+    this.setState((state) => {
+      if (target === 'menu') {
+        if (state.menuClass === 'menu close') {
+          setTimeout(this.props.transformation, 500);
+        } else {
+          this.props.transformation();
+        }
+
+        return {
+          menuClass: state.menuClass === 'menu' ? 'menu close' : 'menu',
+          liClass: state.menuClass === 'menu' ? 'liTransition' : '',
+        };
+      }
+    });
   }
 
   render() {
@@ -111,7 +110,7 @@ class MainMenu extends Component {
         <div
           name="menu"
           className={this.state.menuClass}
-          onClick={(e) => {
+          onClick={() => {
             this.classToggle('menu');
           }}
         >
@@ -181,7 +180,6 @@ class MainMenu extends Component {
         <div className="socialMedia">
           <a
             href="https://github.com/marchworks"
-            rel="noreferrer"
             title="Github"
             target="_blank"
             rel="noopener noreferrer"
@@ -190,7 +188,6 @@ class MainMenu extends Component {
           </a>
           <a
             href="https://twitter.com/marchworks"
-            rel="noreferrer"
             title="Twitter"
             target="_blank"
             rel="noopener noreferrer"
@@ -199,7 +196,6 @@ class MainMenu extends Component {
           </a>
           <a
             href="https://stackoverflow.com/users/story/8619959"
-            rel="noreferrer"
             title="Stack Overflow"
             target="_blank"
             rel="noopener noreferrer"

@@ -5,7 +5,6 @@ class RouteProgress extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      color: '#2299DD',
       showAfterMs: 300,
       width: 0,
       max_width: Math.round(Math.random() * (65 - 50) + 50),
@@ -18,6 +17,21 @@ class RouteProgress extends React.Component {
     this.routeChangeEnd = this.routeChangeEnd.bind(this);
     this.loadingStart = this.loadingStart.bind(this);
     this.loadingEnd = this.loadingEnd.bind(this);
+  }
+
+  componentDidMount() {
+    Router.events.on('routeChangeStart', this.routeChangeStart);
+    Router.events.on('routeChangeComplete', this.routeChangeEnd);
+    Router.events.on('routeChangeError', this.routeChangeEnd);
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.timer);
+    clearTimeout(this.stimer);
+    clearTimeout(this.ltimer);
+    Router.events.off('routeChangeStart', this.routeChangeStart);
+    Router.events.off('routeChangeComplete', this.routeChangeEnd);
+    Router.events.off('routeChangeError', this.routeChangeEnd);
   }
 
   routeChangeStart() {
@@ -64,21 +78,6 @@ class RouteProgress extends React.Component {
     setTimeout(() => {
       this.setState({ width: 0 });
     }, 50);
-  }
-
-  componentDidMount() {
-    Router.events.on('routeChangeStart', this.routeChangeStart);
-    Router.events.on('routeChangeComplete', this.routeChangeEnd);
-    Router.events.on('routeChangeError', this.routeChangeEnd);
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.timer);
-    clearTimeout(this.stimer);
-    clearTimeout(this.ltimer);
-    Router.events.off('routeChangeStart', this.routeChangeStart);
-    Router.events.off('routeChangeComplete', this.routeChangeEnd);
-    Router.events.off('routeChangeError', this.routeChangeEnd);
   }
 
   render() {

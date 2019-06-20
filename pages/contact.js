@@ -1,14 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
 import Layout from '../components/MyLayout';
-import Link from '../components/Link';
 
 class Contact extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   render() {
     return (
       <Layout

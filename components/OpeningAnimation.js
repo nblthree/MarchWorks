@@ -8,10 +8,6 @@ class OpeningAnimation extends React.Component {
     this.wrapper = React.createRef();
   }
 
-  cancel() {
-    this.props.aniEnd();
-  }
-
   componentDidMount() {
     const wrapper = this.wrapper.current;
     setTimeout(() => {
@@ -26,6 +22,10 @@ class OpeningAnimation extends React.Component {
         });
       }
     }, 1000);
+  }
+
+  cancel() {
+    this.props.aniEnd();
   }
 
   render() {

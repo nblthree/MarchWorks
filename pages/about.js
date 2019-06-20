@@ -1,41 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
 import Layout from '../components/MyLayout';
-import Link from '../components/Link';
-import ImageEditor from '../classes/ImageEditor';
 
 class About extends React.Component {
-  constructor(props) {
-    super(props);
-    this.canvas = React.createRef();
-    this.section = React.createRef();
-    this.resize = this.resize.bind(this);
-
-    this.canvasObject = null;
-  }
-
-  componentDidMount() {
-    this.canvasObject = new ImageEditor(
-      this.canvas.current,
-      '/static/mySelfLarg.jpg',
-      this.section.current.offsetWidth < 600
-        ? this.section.current.offsetWidth
-        : 600,
-      800,
-      'sobel',
-      'rg',
-    );
-    window.addEventListener('resize', this.resize);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.resize);
-  }
-
-  resize() {
-    this.canvasObject.onload(this.section.current.offsetWidth, 400);
-  }
-
   render() {
     return (
       <Layout
@@ -48,12 +15,9 @@ class About extends React.Component {
           <meta name="Description" content="About BOUSSOUF NABIL" />
         </Head>
         <div className="About">
-          <section className="intro" ref={this.section}>
+          <section className="intro">
             <div>
               <h2>Web Developer & Designer</h2>
-            </div>
-            <div>
-              <canvas ref={this.canvas} />
             </div>
             <div>
               <h3>The Story</h3>
