@@ -1,4 +1,5 @@
-const nextRoutes = require('next-routes')
-const routes = (module.exports = nextRoutes())
+const nextRoutes = require('next-routes');
 
-routes.add('tutorials', '/tutorials/:name')
+const routes = (module.exports = nextRoutes());
+
+routes.add('tutorials', '/tutorials/:name');

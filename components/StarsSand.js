@@ -3,9 +3,7 @@ import React from 'react';
 class StarsSand extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      
-    };
+    this.state = {};
 
     this.canvasRef = React.createRef();
     this.animation = this.animation.bind(this);
@@ -13,7 +11,7 @@ class StarsSand extends React.Component {
     this.particlesSize = 1;
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.canvas = this.canvasRef.current;
     this.canvas.width = this.canvas.offsetWidth;
     this.canvas.height = this.canvas.offsetHeight;
@@ -23,80 +21,95 @@ class StarsSand extends React.Component {
 
     window.addEventListener('resize', this.resize);
   }
-  componentWillUnmount(){
+
+  componentWillUnmount() {
     window.removeEventListener('resize', this.resize);
   }
 
-  resize(){
+  resize() {
     this.canvas.width = this.canvas.offsetWidth;
     this.canvas.height = this.canvas.offsetHeight;
     this.ctx.fillStyle = this.props.fillStyle;
     this.collection = [];
-    for (var i = 0; i < this.props.particlesAmount; i++) {
+    for (let i = 0; i < this.props.particlesAmount; i++) {
       this.collection[i] = {
         x: this.canvas.width * Math.random(),
         y: this.canvas.height * Math.random(),
-        vx: Math.random()+this.props.speed,
-        vy: -(Math.random()+this.props.speed)
-      }
+        vx: Math.random() + this.props.speed,
+        vy: -(Math.random() + this.props.speed),
+      };
     }
   }
-  particles(){
+
+  particles() {
     this.collection = [];
-    for (var i = 0; i < this.props.particlesAmount; i++) {
+    for (let i = 0; i < this.props.particlesAmount; i++) {
       this.collection[i] = {
         x: this.canvas.width * Math.random(),
         y: this.canvas.height * Math.random(),
-        vx: Math.random()+this.props.speed,
-        vy: -(Math.random()+this.props.speed)
-      }
+        vx: Math.random() + this.props.speed,
+        vy: -(Math.random() + this.props.speed),
+      };
     }
+
     this.animation();
   }
-  draw(){
+
+  draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    for (var i = 0; i < this.collection.length; i++) {
+    for (let i = 0; i < this.collection.length; i++) {
       this.ctx.beginPath();
-      this.ctx.arc(this.collection[i].x, this.collection[i].y, this.particlesSize, 0, Math.PI*2);
+      this.ctx.arc(
+        this.collection[i].x,
+        this.collection[i].y,
+        this.particlesSize,
+        0,
+        Math.PI * 2,
+      );
       this.ctx.closePath();
       this.ctx.fill();
       this.collection[i].x += this.collection[i].vx;
       this.collection[i].y += this.collection[i].vy;
-      if(this.collection[i].x > this.canvas.width){
+      if (this.collection[i].x > this.canvas.width) {
         this.collection[i].x = -4;
         this.collection[i].y = this.canvas.height * Math.random();
       }
-      if(this.collection[i].y < 0){
+
+      if (this.collection[i].y < 0) {
         this.collection[i].x = this.canvas.width * Math.random();
-        this.collection[i].y = this.canvas.height+4;
+        this.collection[i].y = this.canvas.height + 4;
       }
     }
   }
-  animation(){
+
+  animation() {
     requestAnimationFrame(this.animation);
     this.draw();
   }
-    render (){
-      return (
-        <div>
-          <canvas ref={this.canvasRef}></canvas>
-          <style jsx>{`
-            div{
-              position: fixed;
-              height: 100vh;
-              width: 100vw;
-              top: 0;
-              left: 0;
-              background: ${this.props.background};
-            }
-            canvas{
-              height: 100%;
-              width: 100%;
-            }
-          `}</style>
-        </div>
-      );
-    }
+
+  render() {
+    return (
+      <div>
+        <canvas ref={this.canvasRef} />
+        <style jsx>
+          {`
+          div {
+            position: fixed;
+            height: 100vh;
+            width: 100vw;
+            top: 0;
+            left: 0;
+            background: ${this.props.background};
+          }
+          canvas {
+            height: 100%;
+            width: 100%;
+          }
+        `}
+        </style>
+      </div>
+    );
+  }
 }
 
 export default StarsSand;

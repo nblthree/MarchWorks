@@ -3,46 +3,44 @@ import React from 'react';
 class OpeningAnimation extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-    
-    };
+    this.state = {};
     this.cancel = this.cancel.bind(this);
     this.wrapper = React.createRef();
   }
-  cancel(){
+
+  cancel() {
     this.props.aniEnd();
   }
-  componentDidMount(){
-  	var wrapper = this.wrapper.current;
-  	setTimeout(()=>{
-  		var fin = 0;
-  		for(let k=0; k<wrapper.children.length; k++){
-  			wrapper.children[k].style.animationPlayState = "running";
-  			wrapper.children[k].addEventListener( "animationend", ()=>{
-  				fin++;
-  				if(fin >= wrapper.children.length){
-  					setTimeout(this.cancel, 500);
-  				}
-  			})
-  		}
-  	}, 1000)
-    
+
+  componentDidMount() {
+    const wrapper = this.wrapper.current;
+    setTimeout(() => {
+      let fin = 0;
+      for (let k = 0; k < wrapper.children.length; k++) {
+        wrapper.children[k].style.animationPlayState = 'running';
+        wrapper.children[k].addEventListener('animationend', () => {
+          fin++;
+          if (fin >= wrapper.children.length) {
+            setTimeout(this.cancel, 500);
+          }
+        });
+      }
+    }, 1000);
   }
 
-    render (){
-      return (
-        <div id="wrapper" ref={this.wrapper}>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+  render() {
+    return (
+      <div id="wrapper" ref={this.wrapper}>
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
 
-          
+        <img src="/static/logo.svg" alt="" />
 
-          <img src="/static/logo.svg" alt="" />
-
-          <style jsx>{`
+        <style jsx>
+          {`
             img{
               width: 80%;
               max-width: 400px;
@@ -107,10 +105,11 @@ class OpeningAnimation extends React.Component {
                 width: 100%;
               }
             }
-          `}</style>
-        </div>
-      );
-    }
+          `}
+        </style>
+      </div>
+    );
+  }
 }
 
 export default OpeningAnimation;
