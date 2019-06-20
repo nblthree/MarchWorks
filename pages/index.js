@@ -4,7 +4,6 @@ import Head from 'next/head';
 import Link from '../components/Link'
 
 class Index extends React.Component {
-    
 	constructor(props){
         super(props);
         this.state = {
@@ -42,7 +41,7 @@ class Index extends React.Component {
     render (){
         var mot = this.state.words[this.state.word].slice(0, this.state.letter+1);
         return (
-          <Layout oAni={this.props.oAni}>
+          <Layout oAni={this.props.oAni} toggleTheme={this.props.toggleTheme} theme={ this.props.theme }>
             <Head>
                <title>HOME</title>
                <meta name="Description" content="Produced By BOUSSOUF NABIL" />

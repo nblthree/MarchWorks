@@ -73,6 +73,13 @@ class Text {
   getPixels(o=1) {
     return this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height*o);
   }
+
+  setColors(c1, c2){
+    this.fillStyleActive = c1
+    this.fillStyleUnactive = c2 
+    this.fillStyle = this.fillStyleActive
+    this.ctx.fillStyle = this.fillStyle
+  }
 }
 
 export default Text;

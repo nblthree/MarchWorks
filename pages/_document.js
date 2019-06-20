@@ -10,7 +10,6 @@ export default class MyDocument extends Document {
     return (
       <html lang="en">
         <Head>
-          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
           <meta name="theme-color" content="#111"/>
           <meta name="background-color" content="#404040"/>
           <link rel="icon" type="image/x-icon" href="/static/favicons/favicon.ico" />

@@ -20,6 +20,7 @@ class MainMenu extends Component {
       contact: React.createRef(),
       tuto: React.createRef()
     };
+    this.obj = [];
   }
 
 
@@ -38,27 +39,38 @@ class MainMenu extends Component {
 
 
   componentDidMount() {
-    var obj = [];
+    var obj = this.obj
     for(let ref in this.canvas){
       var canvas = this.canvas[ref].current;
-      obj.push(new Text(canvas, canvas.getAttribute('name'), 18, "Georgia", "#ffffff", "#aaaaaa", 4))/*"#3e3e3e", "#7e7e7e"*/
+      obj.push(new Text(canvas, canvas.getAttribute('name'), 18, "Georgia", this.props.theme === 'light' ? '#000000' : "#ffffff", this.props.theme === 'light' ? '#444444' : "#aaaaaa", 4))
     }
     obj.forEach((object)=>{
-      object.canvas.parentElement.addEventListener('click', function() {
+      object.canvas.parentElement.addEventListener('click', () => {
         obj.forEach((o)=>{
           if(o.text !== object.text){
-            o.fillStyle = "#ffffff" //"#7e7e7e"
+            o.fillStyle = this.theme === 'light' ? '#000000' : "#ffffff" //"#7e7e7e"
             o.write()
           }
         })
-        object.fillStyle = "#aaaaaa" //"#3e3e3e"
+        object.fillStyle = this.theme === 'light' ? '#444444' : "#aaaaaa" //"#3e3e3e"
         object.write()
       })
     })
   }
-
+  componentDidUpdate(prev){
+    //console.log(prev, this.props.theme)
+    if(prev.theme !== this.props.theme){
+      for(let canvas of this.obj){
+        canvas.setColors(
+          this.props.theme === 'light' ? '#000000' : "#ffffff",
+          this.props.theme === 'light' ? '#444444' : "#aaaaaa"
+        )
+      }
+    }
+  }
 
   render() {
+    let color = this.props.theme === 'light' ? '#222222' : "#ffffff"
     return (
         <menu id="mainMenu" style={this.state.menuClass === 'menu close' ? {left: 0} : null}>
           <span className="design"><span></span><span></span></span>
@@ -84,15 +96,15 @@ class MainMenu extends Component {
                   <a><div className="arrow"></div><canvas name="CONTACT" ref={this.canvas.contact}>CONTACT</canvas><span></span><span></span></a>
               </Link></li>
               
-              <li className={this.state.liClass}><Link activeClassName='is-active' href='/tutorials'>
-                  <a><div className="arrow"></div><canvas name="TUTORIALS" ref={this.canvas.tuto}>TUTORIALS</canvas><span></span><span></span></a>
+              <li className={this.state.liClass}><Link activeClassName='is-active' href='/blog'>
+                  <a><div className="arrow"></div><canvas name="BLOG" ref={this.canvas.tuto}>BLOG</canvas><span></span><span></span></a>
               </Link></li>
             </ul>
           </nav>
           <div className="socialMedia">
-            <a href="https://github.com/marchworks" rel="noreferrer" title="Github" target="_blank"><FontAwesomeIcon icon={faGithub} size="lg" color="#fff" /></a>
-            <a href="https://twitter.com/marchworks" rel="noreferrer" title="Twitter" target="_blank"><FontAwesomeIcon icon={faTwitter} size="lg" color="#fff" /></a>
-            <a href="https://stackoverflow.com/users/story/8619959" rel="noreferrer" title="Stack Overflow" target="_blank"><FontAwesomeIcon icon={faStackOverflow} size="lg" color="#fff" /></a>
+            <a href="https://github.com/marchworks" rel="noreferrer" title="Github" target="_blank"><FontAwesomeIcon icon={faGithub} size="lg" color={color} /></a>
+            <a href="https://twitter.com/marchworks" rel="noreferrer" title="Twitter" target="_blank"><FontAwesomeIcon icon={faTwitter} size="lg" color={color} /></a>
+            <a href="https://stackoverflow.com/users/story/8619959" rel="noreferrer" title="Stack Overflow" target="_blank"><FontAwesomeIcon icon={faStackOverflow} size="lg" color={color} /></a>
           </div>
         <style jsx>{`
             .logo{
@@ -106,8 +118,8 @@ class MainMenu extends Component {
                 height: 100%;
                 width: 300px;
                 margin: 0;
-                background-color: #000000;/*ffffff*/
-                color: #f0f0f0;/*3e3e3e*/
+                background-color: var(--menu-bg);
+                color: var(--menu-color);
                 transition: 0.4s ease-in 0.3s;
                 left: 0;
                 box-sizing: border-box;

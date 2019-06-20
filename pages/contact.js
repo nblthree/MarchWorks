@@ -13,7 +13,7 @@ class Contact extends React.Component {
     }
     render (){
         return (
-          <Layout oAni={this.props.oAni}>
+          <Layout oAni={this.props.oAni} toggleTheme={this.props.toggleTheme} theme={ this.props.theme }>
             <Head>
                <title>CONTACT</title>
                <meta name="Description" content="Contact BOUSSOUF NABIL" />

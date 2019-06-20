@@ -5,6 +5,9 @@ import StarsSand from './StarsSand'
 import OpeningAnimation from './OpeningAnimation'
 import Router from "next/router";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMoon } from '@fortawesome/free-regular-svg-icons'
+
 class Layout extends React.Component {
   constructor(props) {
     super(props);
@@ -32,7 +35,7 @@ class Layout extends React.Component {
         <>
          {this.state.oAni ? <OpeningAnimation aniEnd={()=>{this.setState({oAni: false})}} /> : null}
           <RouteProgress />
-          <MainMenu transformation={this.transform} />
+          <MainMenu transformation={this.transform} theme={ this.props.theme } />
           <div id="window" style={
             {
               transform: this.state.style.transform,
@@ -44,6 +47,9 @@ class Layout extends React.Component {
               {this.props.children}
             </div>
             <div><StarsSand particlesAmount={50} fillStyle="#888888" background="transparent" speed={0} /></div>
+            <div id="toggleTheme" onClick={()=>{ this.props.toggleTheme() }}>
+              <FontAwesomeIcon icon={faMoon} size="lg" color={this.props.theme === 'light' ? '#000' : '#fff'} />
+            </div>
           </div>
           {/*<StarsSand particlesAmount={50} fillStyle="#444444" background="#ffffff" speed={1} />#4488ff #000000*/}
           <style global jsx>{`
@@ -71,7 +77,7 @@ class Layout extends React.Component {
               height: 100%;
               display: flex;
               background-color: #96999c;
-              color: #dddddd;
+              color: var(--color);
             }
             #window {
               width: 100%;
@@ -81,9 +87,9 @@ class Layout extends React.Component {
               overflow: hidden;
               position: relative;
               box-sizing: border-box;
-              transition: 0.5s ease-in;
+              transition: 0.5s ease-in, background-color 0.4s ease-in 0.3s;
               z-index: 1;
-              background-color: #040608;//191a1b
+              background-color: var(--window-bg);
               //background: url(/static/testd.png) 60% 0 no-repeat;
             }
             #window > div:nth-child(1){
@@ -102,17 +108,22 @@ class Layout extends React.Component {
                 width: 0.8em;
               }
               #window > div:nth-child(1)::-webkit-scrollbar-track{
-                background-color: #333333;
+                background-color: var(--scrollbar-track-bg);
               }
               #window > div:nth-child(1)::-webkit-scrollbar-thumb {
-                background-color: #ffffff;
+                background-color: var(--scrollbar-thumb-bg);
               }
               #window > div:nth-child(1)::-webkit-scrollbar-track-piece {
-                background-color: #333333;
+                background-color: var(--scrollbar-track-bg);
               }
               #window{
                 transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0) !important;
                 position: relative !important;
+              }
+            }
+            @media only screen and (max-width: 600px){
+              #window > div:nth-child(1)::-webkit-scrollbar {
+                width: 0em;
               }
             }
             #window > div:nth-child(2) {
@@ -121,7 +132,14 @@ class Layout extends React.Component {
               position: absolute;
               left: 0;
               top: 0;
-              background: url(/static/bg_mesh_black.png);
+              background: var(--bg-mesh);
+            }
+            #toggleTheme {
+              position: fixed;
+              bottom: 15px;
+              right: 25px;
+              cursor: pointer;
+              z-index: 10000;
             }
           `}</style>
         </>
