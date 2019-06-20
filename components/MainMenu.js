@@ -41,19 +41,6 @@ class MainMenu extends Component {
         ),
       );
     }
-
-    obj.forEach((object) => {
-      object.canvas.parentElement.addEventListener('click', () => {
-        obj.forEach((o) => {
-          if (o.text !== object.text) {
-            o.fillStyle = this.theme === 'light' ? '#000000' : '#ffffff';
-            o.write();
-          }
-        });
-        object.fillStyle = this.theme === 'light' ? '#444444' : '#aaaaaa';
-        object.write();
-      });
-    });
   }
 
   componentDidUpdate(prev) {
