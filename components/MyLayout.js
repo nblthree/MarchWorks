@@ -108,7 +108,7 @@ class Layout extends React.Component {
             width: 100%;
             height: 100%;
             display: flex;
-            background-color: #96999c;
+            background-color: var(--bg);
             color: var(--color);
           }
           #window {

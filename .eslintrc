@@ -38,6 +38,8 @@
             }
         ],
         "no-console": 0,
+        "react/destructuring-assignment": 0,
+        "no-plusplus": 0,
         "max-len": [
             "error",
             {

@@ -69,13 +69,7 @@ export default class MyApp extends App {
               --scrollbar-thumb-bg: ${theme === 'light'
                 ? '#333333'
                 : '#ffffff'};
-              --gray: ${theme === 'light' ? '#7f7f7f' : '#666'};
-              --light-gray: ${theme === 'light' ? '#f0f0f0' : '#333'};
-              --lighter-gray: ${theme === 'light' ? '#fafafa' : '#222'};
-              --red: #ff3b30;
-              --small-shadow: rgba(0, 0, 0, 0.05) 0px 5px 50px;
-              --big-shadow: 0 30px 100px 5px
-                ${theme === 'light' ? 'var(--light-gray)' : '#000'};
+              --bg: ${theme === 'light' ? '#666' : '#96999c'};
             }
           `}
         </style>

@@ -227,7 +227,7 @@ class MainMenu extends Component {
           #mainMenu .menu span {
             width: 100%;
             height: 2px;
-            background-color: #ccc;
+            background-color: ${this.props.theme === 'light' ? '#444' : '#ccc'};
             position: absolute;
             transform-origin: center;
             transition: 0.6s ease-out;
@@ -253,14 +253,14 @@ class MainMenu extends Component {
             content: '';
             width: 100%;
             height: 2px;
-            background-color: #ccc;
+            background-color: ${this.props.theme === 'light' ? '#444' : '#ccc'};
             position: absolute;
             top: 10px;
             transition: 0.3s 0.3s linear;
           }
 
           #mainMenu .close span {
-            background-color: #fff;
+            background-color: ${this.props.theme === 'light' ? '#000' : '#fff'};
           }
 
           #mainMenu .close span:first-child {
@@ -388,7 +388,7 @@ class MainMenu extends Component {
             #mainMenu .design span:after,
             #mainMenu li a span:before,
             #mainMenu li a span:after {
-              background-color: #fff;
+              background-color: ${this.props.theme === 'light' ? '#000000' : '#ffffff'};
               position: absolute;
               content: '';
             }
