@@ -12,7 +12,7 @@ class About extends React.Component {
       >
         <Head>
           <title>ABOUT</title>
-          <meta name="Description" content="About BOUSSOUF NABIL" />
+          <meta name="Description" content="About BMarchWorks" />
         </Head>
         <div className="About">
           <section className="intro">

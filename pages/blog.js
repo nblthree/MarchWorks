@@ -18,7 +18,7 @@ class Tutorials extends React.Component {
       >
         <Head>
           <title>TUTORIALS</title>
-          <meta name="Description" content="Tutorials" />
+          <meta name="Description" content="Blog" />
         </Head>
         <div className="Tutorials">
           <section>

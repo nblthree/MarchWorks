@@ -65,7 +65,7 @@ class Index extends React.Component {
       >
         <Head>
           <title>HOME</title>
-          <meta name="Description" content="Produced By BOUSSOUF NABIL" />
+          <meta name="Description" content="Produced By MarchWorks" />
         </Head>
         <div className="Home">
           <div id="welcome">
@@ -76,19 +76,12 @@ class Index extends React.Component {
           </div>
           <section className="intro">
             <div>
-              <h2>Boussouf Nabil</h2>
+              <h2>Projects</h2>
             </div>
             <div>
-              <h3>Dev Story</h3>
+              <h3>AniTV</h3>
               <article>
-                <p>
-                  Born in 1998, living in Meknes Morocco, freelance developer.
-                  SPA, SSR development with JavaScript, have a way with design
-                  and 2D animation.
-                </p>
-                <Link href="/about">
-                  <a>Learn more.</a>
-                </Link>
+                First Project
               </article>
             </div>
           </section>

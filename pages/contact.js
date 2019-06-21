@@ -12,7 +12,7 @@ class Contact extends React.Component {
       >
         <Head>
           <title>CONTACT</title>
-          <meta name="Description" content="Contact BOUSSOUF NABIL" />
+          <meta name="Description" content="Contact MarchWorks" />
         </Head>
         <div className="Contact">
           <section>
