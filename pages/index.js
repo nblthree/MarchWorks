@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head';
-import Layout from '../components/MyLayout';
 import Link from '../components/Link';
 
 class Index extends React.Component {
@@ -10,7 +9,7 @@ class Index extends React.Component {
       words: ['Welcome', 'Bienvenu', 'ようこそ', 'Willkommen', 'Hoşgeldiniz'],
       word: 0,
       letter: 0,
-      forwards: true,
+      forwards: true
     };
     this.timer = null;
     this.animate = this.animate.bind(this);
@@ -25,7 +24,7 @@ class Index extends React.Component {
   }
 
   animate() {
-    this.setState((prev) => {
+    this.setState(prev => {
       if (prev.letter === prev.words[prev.word].length - 1 && prev.forwards) {
         return { forwards: false };
       }
@@ -33,7 +32,7 @@ class Index extends React.Component {
       if (prev.letter === 0 && !prev.forwards) {
         return {
           word: prev.word === prev.words.length - 1 ? 0 : prev.word + 1,
-          forwards: true,
+          forwards: true
         };
       }
 
@@ -45,24 +44,16 @@ class Index extends React.Component {
     });
     this.timer = setTimeout(
       this.animate,
-      this.state.letter === this.state.words[this.state.word].length - 1
-        && this.state.forwards
+      this.state.letter === this.state.words[this.state.word].length - 1 && this.state.forwards
         ? 3000
-        : 200,
+        : 200
     );
   }
 
   render() {
-    const mot = this.state.words[this.state.word].slice(
-      0,
-      this.state.letter + 1,
-    );
+    const mot = this.state.words[this.state.word].slice(0, this.state.letter + 1);
     return (
-      <Layout
-        oAni={this.props.oAni}
-        toggleTheme={this.props.toggleTheme}
-        theme={this.props.theme}
-      >
+      <>
         <Head>
           <title>HOME</title>
           <meta name="Description" content="Produced By MarchWorks" />
@@ -80,84 +71,82 @@ class Index extends React.Component {
             </div>
             <div>
               <h3>AniTV</h3>
-              <article>
-                First Project
-              </article>
+              <article>First Project</article>
             </div>
           </section>
           <style jsx>
             {`
-            .intro div {
-              padding: 3% 10% 3% 10%;
-            }
-            .intro div:first-child h2 {
-              margin: 0;
-            }
-            .intro div:nth-child(2) h3 {
-              color: #2f4f4fdb;
-            }
-            .intro {
-              width: 80%;
-              max-width: 850px;
-            }
-            .intro article {
-              padding: 1% 0% 1% 5%;
-              font-size: 1.15rem;
-              font-family: Source Sans Pro, sans-serif;
-            }
-            @media only screen and (max-width: 600px) {
-              .intro {
-                width: 100%;
-              }
               .intro div {
-                padding: 3% 1% 3% 0%;
+                padding: 3% 10% 3% 10%;
+              }
+              .intro div:first-child h2 {
+                margin: 0;
+              }
+              .intro div:nth-child(2) h3 {
+                color: #2f4f4fdb;
+              }
+              .intro {
+                width: 80%;
+                max-width: 850px;
+              }
+              .intro article {
+                padding: 1% 0% 1% 5%;
+                font-size: 1.15rem;
+                font-family: Source Sans Pro, sans-serif;
+              }
+              @media only screen and (max-width: 600px) {
+                .intro {
+                  width: 100%;
+                }
+                .intro div {
+                  padding: 3% 1% 3% 0%;
+                }
+                .Home {
+                  padding: 0 20px 0 20px;
+                }
               }
               .Home {
-                padding: 0 20px 0 20px;
+                width: 100%;
+                height: 1000px;
+                box-sizing: border-box;
               }
-            }
-            .Home {
-              width: 100%;
-              height: 1000px;
-              box-sizing: border-box;
-            }
 
-            #welcome {
-              display: flex;
-              height: 233px;
-            }
+              #welcome {
+                display: flex;
+                height: 233px;
+              }
 
-            #welcome h2 {
-              margin: 80px auto;
-              text-align: center;
-              font-size: 3rem;
-              font-weight: 400;
-              display: flex;
-            }
+              #welcome h2 {
+                margin: 80px auto;
+                text-align: center;
+                font-size: 3rem;
+                font-weight: 400;
+                display: flex;
+              }
 
-            #welcome #typer {
-              width: 2px;
-              background-color: #666666;
-              display: block;
-              opacity: 0;
-              animation: fade 0.4s linear 0s infinite forwards;
-            }
-
-            @keyframes fade {
-              0% {
+              #welcome #typer {
+                width: 2px;
+                background-color: #666666;
+                display: block;
                 opacity: 0;
+                animation: fade 0.4s linear 0s infinite forwards;
               }
-              50% {
-                opacity: 1;
+
+              @keyframes fade {
+                0% {
+                  opacity: 0;
+                }
+                50% {
+                  opacity: 1;
+                }
+                100% {
+                  opacity: 0;
+                }
               }
-              100% {
-                opacity: 0;
-              }
-            }
-          `}
+            `}
           </style>
         </div>
-      </Layout>
+      </>
     );
   }
 }

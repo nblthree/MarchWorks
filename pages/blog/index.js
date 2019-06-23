@@ -1,9 +1,24 @@
 import React from 'react';
 import Head from 'next/head';
-import Layout from '../../components/MyLayout';
 
+import Link from '../../components/Link';
+import posts from '../../data/blog.json';
 
-class Tutorials extends React.Component {
+// Sort the posts so that newest post is first
+posts.sort((a, b) => {
+  const dateA = new Date(a.create_date);
+  const dateB = new Date(b.create_date);
+
+  if (dateA < dateB) {
+    return 1;
+  }
+  if (dateA > dateB) {
+    return -1;
+  }
+  return 0;
+});
+
+class Blog extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -11,41 +26,104 @@ class Tutorials extends React.Component {
 
   render() {
     return (
-      <Layout
-        oAni={this.props.oAni}
-        toggleTheme={this.props.toggleTheme}
-        theme={this.props.theme}
-      >
+      <>
         <Head>
           <title>Blog</title>
           <meta name="Description" content="Blog" />
         </Head>
         <div className="Blog">
-          <section>
-            <article>Under Development</article>
+          <section className="posts">
+            {posts.map(post => (
+              <Link href={`/blog/${post.slug}`} prefetch key={post.id}>
+                <div className="post">
+                  <div className="header">
+                    <h1>{post.title}</h1>
+                    <span>{post.create_date}</span>
+                  </div>
+                  <div className="image">
+                    <img src={post.cover} />
+                  </div>
+                </div>
+              </Link>
+            ))}
           </section>
           <style jsx>
             {`
-            .Blog {
-              width: 100%;
-              height: 100%;
-            }
-            section {
-              //padding: 5% 0 5% 0;
-              display: flex;
-              height: 100%;
-            }
-            article {
-              text-align: center;
-              margin: auto;
-              font-size: 1.5rem;
-            }
-          `}
+              .Blog {
+                width: 100%;
+              }
+              .posts {
+                padding: 5% 5% 5% 5%;
+                display: flex;
+                flex-direction: column;
+                box-sizing: border-box;
+              }
+              .post {
+                border-radius: 5px;
+                border: 1px solid var(--br-color);
+                margin-bottom: 3rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                background-color: var(--post-bg);
+                cursor: pointer;
+                transition: transform 150ms ease-in-out, background 300ms ease-in-out,
+                  border 300ms ease-in-out;
+              }
+
+              .post:hover {
+                transform: scale(1.01);
+              }
+
+              .header {
+                padding: 1rem 1.5rem;
+                width: 100%;
+              }
+
+              .image {
+                width: 100%;
+                display: flex;
+                flex: 1;
+                position: relative;
+                overflow: hidden;
+                border-bottom: 0.5px solid var(--br-color);
+                border-radius: 0 0 5px 5px;
+                transition: border 300ms ease-in-out;
+              }
+
+              img {
+                margin: auto;
+                max-height: 300px;
+                max-width: 100%;
+              }
+
+              .post:last-child {
+                border-bottom: none;
+              }
+
+              .header h1 {
+                font-size: 2.25rem;
+                letter-spacing: -0.5px;
+                margin: 0.5rem 0;
+              }
+
+              .header span {
+                //color: var(--gray);
+                font-size: 1rem;
+              }
+
+              @media screen and (max-width: 950px) {
+                .post h1 {
+                  font-size: 1.5rem;
+                }
+              }
+            `}
           </style>
         </div>
-      </Layout>
+      </>
     );
   }
 }
 
-export default Tutorials;
+export default Blog;

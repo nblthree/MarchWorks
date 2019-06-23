@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "slug": "pa-works",
+    "title": "P.A Works",
+    "create_date": "March 11, 2019",
+    "edit_date": "March 11, 2019",
+    "cover": "/static/img/fairygone.jpg"
+  },
+  {
+    "id": 2,
+    "slug": "webpack-cutom-loader",
+    "title": "Webpack cutom loader",
+    "create_date": "March 30, 2019",
+    "edit_date": "March 30, 2019"
+  }
+]

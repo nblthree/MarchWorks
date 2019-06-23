@@ -1,15 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
-import Layout from '../components/MyLayout';
 
 class About extends React.Component {
   render() {
     return (
-      <Layout
-        oAni={this.props.oAni}
-        toggleTheme={this.props.toggleTheme}
-        theme={this.props.theme}
-      >
+      <>
         <Head>
           <title>ABOUT</title>
           <meta name="Description" content="About BMarchWorks" />
@@ -22,10 +17,9 @@ class About extends React.Component {
             <div>
               <h3>The Story</h3>
               <article>
-                Senior bachelor's degree student specialized in Mathematics.
-                Started web development in 2016. Having a strong grip over the
-                way of design and coding after 3 years in the field. By doing
-                the whole process of production alone, it is possible to provide
+                Senior bachelor's degree student specialized in Mathematics. Started web development
+                in 2016. Having a strong grip over the way of design and coding after 3 years in the
+                field. By doing the whole process of production alone, it is possible to provide
                 detailed interactive and high quality products.
               </article>
             </div>
@@ -54,54 +48,54 @@ class About extends React.Component {
           </section>
           <style jsx>
             {`
-            .intro div {
-              padding: 3% 10% 3% 10%;
-            }
-            .intro div:first-child h2 {
-              margin: 0;
-            }
-            .intro div h3 {
-              color: #2f4f4fdb;
-            }
-            .intro ul {
-              padding: 0;
-            }
-            .intro ul li {
-              margin: 10px 0 10px 0;
-            }
-            .intro article {
-              padding: 1% 0% 1% 5%;
-              font-size: 1.15rem;
-              font-family: Source Sans Pro, sans-serif;
-            }
-            .intro {
-              width: 80%;
-              max-width: 850px;
-              margin-top: 20px;
-            }
-            @media only screen and (max-width: 600px) {
-              .intro {
-                width: 100%;
-              }
               .intro div {
-                padding: 3% 1% 3% 0%;
+                padding: 3% 10% 3% 10%;
               }
-              .intro div:nth-child(2) {
-                padding: 5% 0% 5% 0%;
+              .intro div:first-child h2 {
+                margin: 0;
+              }
+              .intro div h3 {
+                color: #2f4f4fdb;
+              }
+              .intro ul {
+                padding: 0;
+              }
+              .intro ul li {
+                margin: 10px 0 10px 0;
+              }
+              .intro article {
+                padding: 1% 0% 1% 5%;
+                font-size: 1.15rem;
+                font-family: Source Sans Pro, sans-serif;
+              }
+              .intro {
+                width: 80%;
+                max-width: 850px;
+                margin-top: 20px;
+              }
+              @media only screen and (max-width: 600px) {
+                .intro {
+                  width: 100%;
+                }
+                .intro div {
+                  padding: 3% 1% 3% 0%;
+                }
+                .intro div:nth-child(2) {
+                  padding: 5% 0% 5% 0%;
+                }
+                .About {
+                  padding: 0 20px 0 20px;
+                }
               }
               .About {
-                padding: 0 20px 0 20px;
+                width: 100%;
+                height: 1000px;
+                box-sizing: border-box;
               }
-            }
-            .About {
-              width: 100%;
-              height: 1000px;
-              box-sizing: border-box;
-            }
-          `}
+            `}
           </style>
         </div>
-      </Layout>
+      </>
     );
   }
 }
