@@ -27,7 +27,7 @@
     "@mdx-js/mdx": "^1.0.21",
     "@mdx-js/tag": "^0.20.3",
     "@next/bundle-analyzer": "^8.1.0",
-    "@next/mdx": "^8.1.0",
+    "@next/mdx": "^9.0.2",
     "next": "^8.1.1-canary.55",
     "next-cookies": "^1.1.2",
     "react": "^16.8.1",

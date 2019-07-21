@@ -832,10 +832,10 @@
   dependencies:
     webpack-bundle-analyzer "3.0.3"
 
-"@next/mdx@^8.1.0":
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/@next/mdx/-/mdx-8.1.0.tgz#ca465cf90913d76d9167821869a3416da8f9b163"
-  integrity sha512-qUt3Vln9PecnG3xFUUGwgmkXJ6sxcF2dk9vBpm2DDZ4UOu0aSNd3VsB+XTeNopX1dSfzIvdYIuIZT1JcK/zRrw==
+"@next/mdx@^9.0.2":
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/@next/mdx/-/mdx-9.0.2.tgz#64a6e870b5e98c5a5858054cf6306abcc314db40"
+  integrity sha512-b8jkRj5Pd+YCY/CSYI3jEptXu6bYhRz/+IeLm7DikYLw/6Hu8PBVnkT3HpyM9+JVPRHy7NpjuG5S7JcgVyL19w==
 
 "@types/node@*":
   version "12.0.10"
