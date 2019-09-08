@@ -1,5 +1,5 @@
 import React from 'react';
-import App, { Container } from 'next/app';
+import App from 'next/app';
 import cookies from 'next-cookies';
 import Layout from '../components/MyLayout';
 
@@ -48,7 +48,7 @@ export default class MyApp extends App {
     const { Component, pageProps } = this.props;
     const { theme } = this.state;
     return (
-      <Container>
+      <>
         <Layout
           oAni={this.props.pageProps.oAni}
           toggleTheme={this.toggleTheme}
@@ -74,7 +74,7 @@ export default class MyApp extends App {
             }
           `}
         </style>
-      </Container>
+      </>
     );
   }
 }

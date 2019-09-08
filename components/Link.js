@@ -7,18 +7,12 @@ const ActiveLink = ({ router, children, ...props }) => {
 
   let className = child.props.className || null;
   if (router.pathname === props.href && props.activeClassName) {
-    className = `${className !== null ? className : ''} ${
-      props.activeClassName
-    }`.trim();
+    className = `${className !== null ? className : ''} ${props.activeClassName}`.trim();
   }
 
   delete props.activeClassName;
 
-  return (
-    <Link {...props} prefetch>
-      {React.cloneElement(child, { className })}
-    </Link>
-  );
+  return <Link {...props}>{React.cloneElement(child, { className })}</Link>;
 };
 
 export default withRouter(ActiveLink);

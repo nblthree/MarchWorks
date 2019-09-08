@@ -69,27 +69,93 @@ class Index extends React.Component {
             <div>
               <h2>Projects</h2>
             </div>
-            <div>
-              <h3>AniTV</h3>
-              <article>First Project</article>
+            <div className="projects">
+              <div className="project">
+                <div
+                  className="p-img"
+                  style={{ backgroundImage: "url('/static/img/AniTV.png')" }}
+                ></div>
+                <h3>AniTV</h3>
+                <p>
+                  Download and watch your preferred seasonal anime and get notified whenever a new
+                  episode is available
+                </p>
+                <div className="download">
+                  <a href="https://github.com/MarchWorks/AniTV/releases/latest/download/window.x64.zip">
+                    <button>Download For Windows x64</button>
+                  </a>
+                </div>
+              </div>
+              <div className="project">
+                <div
+                  className="p-img"
+                  style={{ backgroundImage: "url('/static/img/Ani-desktop-wallpaper.png')" }}
+                ></div>
+                <h3>Ani desktop wallpaper</h3>
+                <p>Set a new anime wallpaper in a chosen interval with chosen tags</p>
+                <div className="download">
+                  <a href="https://github.com/MarchWorks/Ani-desktop-wallpaper/releases/latest/download/windows.x64.zip">
+                    <button>Download For Windows x64</button>
+                  </a>
+                </div>
+              </div>
             </div>
           </section>
           <style jsx>
             {`
-              .intro div {
+              .download {
+                display: flex;
+                justify-content: flex-end;
+              }
+              .download button {
+                height: 30px;
+                width: 200px;
+                background: white;
+                outline: none;
+                border: 0;
+                color: #333;
+                font-weight: 600;
+                cursor: pointer;
+              }
+              .download a {
+                margin-top: 40px;
+              }
+              .project {
+                position: relative;
+                margin-top: 50px;
+              }
+              .p-img {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                background-position: center;
+                z-index: -1;
+                box-sizing: border-box;
+                top: 0;
+                left: 0;
+                filter: blur(16px);
+              }
+              .intro > div,
+              .intro > div > div {
                 padding: 3% 10% 3% 10%;
               }
-              .intro div:first-child h2 {
+              .intro .projects > div {
+                padding: 3% 10% 3% 5%;
+              }
+              .intro > div:first-child h2 {
                 margin: 0;
               }
-              .intro div:nth-child(2) h3 {
-                color: #2f4f4fdb;
+              .project h3 {
+                color: #fff;
+                padding-left: 2%;
               }
               .intro {
                 width: 80%;
                 max-width: 850px;
               }
-              .intro article {
+              .project p {
                 padding: 1% 0% 1% 5%;
                 font-size: 1.15rem;
                 font-family: Source Sans Pro, sans-serif;

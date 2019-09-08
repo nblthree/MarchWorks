@@ -70,6 +70,8 @@ class Blog extends React.Component {
                 cursor: pointer;
                 transition: transform 150ms ease-in-out, background 300ms ease-in-out,
                   border 300ms ease-in-out;
+                height: 400px;
+                position: relative;
               }
 
               .post:hover {
@@ -79,10 +81,15 @@ class Blog extends React.Component {
               .header {
                 padding: 1rem 1.5rem;
                 width: 100%;
+                position: absolute;
+                z-index: 1;
+                background: #04060840;
+                box-sizing: border-box;
               }
 
               .image {
                 width: 100%;
+                height: 100%;
                 display: flex;
                 flex: 1;
                 position: relative;
@@ -94,8 +101,8 @@ class Blog extends React.Component {
 
               img {
                 margin: auto;
-                max-height: 300px;
-                max-width: 100%;
+                width: 100%;
+                height: 100%;
               }
 
               .post:last-child {
@@ -116,6 +123,9 @@ class Blog extends React.Component {
               @media screen and (max-width: 950px) {
                 .post h1 {
                   font-size: 1.5rem;
+                }
+                .post {
+                  height: 50vh;
                 }
               }
             `}

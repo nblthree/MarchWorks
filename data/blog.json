@@ -1,17 +1,10 @@
 [
   {
-    "id": 1,
-    "slug": "pa-works",
-    "title": "P.A Works",
-    "create_date": "March 11, 2019",
-    "edit_date": "March 11, 2019",
-    "cover": "/static/img/fairygone.jpg"
-  },
-  {
-    "id": 2,
-    "slug": "webpack-cutom-loader",
-    "title": "Webpack cutom loader",
-    "create_date": "March 30, 2019",
-    "edit_date": "March 30, 2019"
+    "id": 0,
+    "slug": "introduction",
+    "title": "Introduction",
+    "create_date": "September 08, 2019",
+    "edit_date": "September 08, 2019",
+    "cover": "https://konachan.com/sample/040765f6b07460207e68729cac7671df/Konachan.com%20-%20247900%20sample.jpg"
   }
 ]
