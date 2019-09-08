@@ -34,7 +34,7 @@ class Blog extends React.Component {
         <div className="Blog">
           <section className="posts">
             {posts.map(post => (
-              <Link href={`/blog/${post.slug}`} prefetch key={post.id}>
+              <Link href={`/blog/${post.slug}`} key={post.id}>
                 <div className="post">
                   <div className="header">
                     <h1>{post.title}</h1>
@@ -118,6 +118,9 @@ class Blog extends React.Component {
               .header span {
                 //color: var(--gray);
                 font-size: 1rem;
+              }
+              .post > div {
+                color: #dddddd;
               }
 
               @media screen and (max-width: 950px) {
