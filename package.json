@@ -24,14 +24,6 @@
       "prettier --write",
       "standard --fix",
       "git add"
-    ],
-    "*.tsx": [
-      "prettier --write",
-      "git add"
-    ],
-    "*.ts": [
-      "prettier --write",
-      "git add"
     ]
   },
   "standard": {
