@@ -1,9 +1,6 @@
 const fs = require('fs')
 
-const robotsTxt = `
-Sitemap: https://march-works.marchworks.now.sh/static/sitemap.xml
-`
-
+const robotsTxt = `Sitemap: https://march-works.marchworks.now.sh/static/sitemap.xml`
 fs.writeFileSync('public/robots.txt', robotsTxt)
 
 const getPathsObject = () => {
@@ -70,4 +67,4 @@ const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
     .join('')}
 </urlset>`
 
-fs.writeFileSync('static/sitemap.xml', sitemapXml)
+fs.writeFileSync('public/sitemap.xml', sitemapXml)
