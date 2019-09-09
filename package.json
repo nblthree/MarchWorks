@@ -1,22 +1,47 @@
 {
+  "private": true,
   "name": "MarchWorks",
   "version": "1.0.0",
-  "description": "",
+  "description": "MarchWorks Blog",
   "main": "index.js",
   "scripts": {
     "dev": "next",
     "build": "next build",
     "export": "next export",
     "start": "next start",
-    "lint": "eslint --fix --ignore-path .gitignore --ext jsx,js ."
+    "gsr": "node scripts/generate_sitemap.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "MarchWorks<edel.f.wool@gmail.com>",
+  "license": "MIT",
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged"
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "standard --fix",
+      "git add"
+    ],
+    "*.tsx": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.ts": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "ignore": [
+      "**/node_modules/**"
+    ],
+    "globals": [
+      "performance"
+    ]
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.22",
@@ -35,14 +60,11 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
-    "eslint": "^5.13.0",
-    "eslint-config-airbnb": "^17.1.1",
-    "eslint-config-prettier": "^6.2.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.14.3",
-    "husky": "^3.0.1",
+    "eslint": "^6.1.0",
+    "husky": "^3.0.3",
+    "lint-staged": "^9.2.1",
     "prettier": "^1.18.2",
-    "pretty-quick": "^1.11.1"
+    "standard": "^13.1.0",
+    "eslint": "^5.13.0"
   }
 }
