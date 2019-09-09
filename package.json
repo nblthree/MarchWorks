@@ -9,7 +9,7 @@
     "build": "next build",
     "export": "next export",
     "start": "next start",
-    "gsr": "node scripts/generate_sitemap.js"
+    "generator": "node scripts/generator.js"
   },
   "keywords": [],
   "author": "MarchWorks<edel.f.wool@gmail.com>",

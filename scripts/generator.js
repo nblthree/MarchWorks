@@ -1,5 +1,11 @@
 const fs = require('fs')
 
+const robotsTxt = `
+Sitemap: https://march-works.marchworks.now.sh/static/sitemap.xml
+`
+
+fs.writeFileSync('public/robots.txt', robotsTxt)
+
 const getPathsObject = () => {
   const fileObj = {}
 
