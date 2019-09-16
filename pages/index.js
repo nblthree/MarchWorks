@@ -1,100 +1,109 @@
-import React from 'react';
-import Head from 'next/head';
-import Link from '../components/Link';
+import React from 'react'
+import Head from 'next/head'
 
 class Index extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       words: ['Welcome', 'Bienvenu', 'ようこそ', 'Willkommen', 'Hoşgeldiniz'],
       word: 0,
       letter: 0,
       forwards: true
-    };
-    this.timer = null;
-    this.animate = this.animate.bind(this);
+    }
+    this.timer = null
+    this.animate = this.animate.bind(this)
   }
 
-  componentDidMount() {
-    this.animate();
+  componentDidMount () {
+    this.animate()
   }
 
-  componentWillUnmount() {
-    clearTimeout(this.timer);
+  componentWillUnmount () {
+    clearTimeout(this.timer)
   }
 
-  animate() {
+  animate () {
     this.setState(prev => {
       if (prev.letter === prev.words[prev.word].length - 1 && prev.forwards) {
-        return { forwards: false };
+        return { forwards: false }
       }
 
       if (prev.letter === 0 && !prev.forwards) {
         return {
           word: prev.word === prev.words.length - 1 ? 0 : prev.word + 1,
           forwards: true
-        };
+        }
       }
 
       if (prev.forwards) {
-        return { letter: prev.letter + 1 };
+        return { letter: prev.letter + 1 }
       }
 
-      return { letter: prev.letter - 1 };
-    });
+      return { letter: prev.letter - 1 }
+    })
     this.timer = setTimeout(
       this.animate,
-      this.state.letter === this.state.words[this.state.word].length - 1 && this.state.forwards
+      this.state.letter === this.state.words[this.state.word].length - 1 &&
+        this.state.forwards
         ? 3000
         : 200
-    );
+    )
   }
 
-  render() {
-    const mot = this.state.words[this.state.word].slice(0, this.state.letter + 1);
+  render () {
+    const mot = this.state.words[this.state.word].slice(
+      0,
+      this.state.letter + 1
+    )
     return (
       <>
         <Head>
           <title>HOME</title>
-          <meta name="Description" content="Produced By MarchWorks" />
+          <meta name='Description' content='Produced By MarchWorks' />
         </Head>
-        <div className="Home">
-          <div id="welcome">
+        <div className='Home'>
+          <div id='welcome'>
             <h2>
               {mot}
-              <span id="typer" />
+              <span id='typer' />
             </h2>
           </div>
-          <section className="intro">
+          <section className='intro'>
             <div>
               <h2>Projects</h2>
             </div>
-            <div className="projects">
-              <div className="project">
+            <div className='projects'>
+              <div className='project'>
                 <div
-                  className="p-img"
-                  style={{ backgroundImage: "url('/static/img/AniTV.png')" }}
-                ></div>
+                  className='p-img'
+                  style={{ backgroundImage: "url('/static/img/AniTV.jpg')" }}
+                />
                 <h3>AniTV</h3>
                 <p>
-                  Download and watch your preferred seasonal anime and get notified whenever a new
-                  episode is available
+                  Download and watch your preferred seasonal anime and get
+                  notified whenever a new episode is available
                 </p>
-                <div className="download">
-                  <a href="https://github.com/MarchWorks/AniTV/releases/latest/download/window.x64.zip">
+                <div className='download'>
+                  <a href='https://github.com/MarchWorks/AniTV/releases/latest/download/window.x64.zip'>
                     <button>Download For Windows x64</button>
                   </a>
                 </div>
               </div>
-              <div className="project">
+              <div className='project'>
                 <div
-                  className="p-img"
-                  style={{ backgroundImage: "url('/static/img/Ani-desktop-wallpaper.png')" }}
-                ></div>
+                  className='p-img'
+                  style={{
+                    backgroundImage:
+                      "url('/static/img/Ani-desktop-wallpaper.jpg')"
+                  }}
+                />
                 <h3>Ani desktop wallpaper</h3>
-                <p>Set a new anime wallpaper in a chosen interval with chosen tags</p>
-                <div className="download">
-                  <a href="https://github.com/MarchWorks/Ani-desktop-wallpaper/releases/latest/download/windows.x64.zip">
+                <p>
+                  Set a new anime wallpaper in a chosen interval with chosen
+                  tags
+                </p>
+                <div className='download'>
+                  <a href='https://github.com/MarchWorks/Ani-desktop-wallpaper/releases/latest/download/windows.x64.zip'>
                     <button>Download For Windows x64</button>
                   </a>
                 </div>
@@ -213,8 +222,8 @@ class Index extends React.Component {
           </style>
         </div>
       </>
-    );
+    )
   }
 }
 
-export default Index;
+export default Index
