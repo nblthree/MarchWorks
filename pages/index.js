@@ -84,7 +84,7 @@ class Index extends React.Component {
                   notified whenever a new episode is available
                 </p>
                 <div className='download'>
-                  <a href='https://github.com/MarchWorks/AniTV/releases/latest/download/window.x64.zip'>
+                  <a href='https://github.com/MarchWorks/AniTV/releases/latest/download/windows.x64.zip'>
                     <button>Download For Windows x64</button>
                   </a>
                 </div>
