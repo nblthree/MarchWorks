@@ -84,7 +84,7 @@ class Index extends React.Component {
                   notified whenever a new episode is available
                 </p>
                 <div className='download'>
-                  <a href='https://github.com/MarchWorks/AniTV/releases/latest/download/AniTV-Setup-1.0.5.exe'>
+                  <a href='https://github.com/MarchWorks/AniTV/releases/latest/download/AniTV-Setup-1.0.6.exe'>
                     <button>Download For Windows x64</button>
                   </a>
                 </div>
@@ -103,7 +103,7 @@ class Index extends React.Component {
                   tags
                 </p>
                 <div className='download'>
-                  <a href='https://github.com/MarchWorks/Ani-desktop-wallpaper/releases/latest/download/windows.x64.zip'>
+                  <a href='https://github.com/MarchWorks/Ani-desktop-wallpaper/releases/latest/download/Ani-desktop-wallpaper-Setup-1.3.2.exe'>
                     <button>Download For Windows x64</button>
                   </a>
                 </div>
